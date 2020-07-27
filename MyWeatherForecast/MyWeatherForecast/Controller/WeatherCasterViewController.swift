@@ -10,9 +10,19 @@ import UIKit
 
 class WeatherCasterViewController : UIViewController {
   
+  //MARK: - Propertes
+  var forecastService : ForecastServiceable!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    view.backgroundColor = .red
+  
+    forecastService.fetchWeatherForecast(endpoint: .init(path: .weather)) { result in
+      switch result {
+      case .success(let value) :
+        print(value)
+      case .failure(let error) :
+        print("현재 날씨 가져오기 실패. \(error)")
+      }
+    }
   }
 }

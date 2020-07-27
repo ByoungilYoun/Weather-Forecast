@@ -16,8 +16,10 @@ var window: UIWindow?
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
  
     window = UIWindow(frame: UIScreen.main.bounds)
-    window?.rootViewController = WeatherCasterViewController()
     window?.backgroundColor = .systemBackground
+    let rootViewController = WeatherCasterViewController()
+    rootViewController.forecastService = ForecastServiceStub()
+    window?.rootViewController = rootViewController
     window?.makeKeyAndVisible()
     return true
   }
